@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,200;9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        *{
+            font-family: 'DM Sans', sans-serif !important;
+        }
+        .toast{
+            position: relative;
+        }
+        .toast::after{
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            width: 100%;
+            background-color: white;
+            animation:  anim 1.5s linear forwards;
+        }
+        @keyframes anim {
+            100%{
+                width: 0;
+            }
+        }
+
+    </style>
+    <title>Password Generator</title>
+</head>
+<body>
+    <main class="min-h-screen bg-[#010511] flex items-center justify-center">
+        <div class="rounded-xl border-2 border-[#101826] p-4 w-full max-w-[400px] my-[50px] mx-5">
+            <h1 class="text-3xl font-semibold text-white mb-4 text-center">Password Generator</h1>
+            <h6 class="select-all text-base font-light bg-[#313947] text-white h-[50px] flex items-center px-2 w-full rounded-xl mb-4 hover:text-white" id="displayOutput">Click On Generate Button</h6>
+            <div class="flex items-center w-full gap-3">
+                <button class="bg-blue-500 text-white w-full text-base rounded-xl py-2 hover:bg-blue-800 hover:text-white transition-all duration-500" id="generate" >Generate</button>
+                <button class="bg-green-500 text-white w-full text-base rounded-xl py-2 hover:bg-green-800 hover:text-white transition-all duration-500" id="clipboard">Copy To Clipboard</button>
+            </div>
+            <div class="border-2 border-[#101826] rounded-xl mt-4 p-3">
+                <div class="flex justify-center flex-col gap-1 mb-4">
+                    <div class="flex items-center justify-between">
+                        <label for="passwordLength" class="text-[#f8fafc] text-base font-light">Length  (4-20)</label>
+                        <span class="text-[#f8fafc] text-base font-light" id="rangeLiveData"></span>
+                    </div>
+                    <input type="range" name="passwordLength" id="passwordLength" max="20" min="4" step="1" value="0" class="h-[4px] my-2">
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <label for="uppercaseCheckBox" class="text-[#f8fafc] text-base font-light">Uppercase Letters</label>
+                    <label for="uppercaseCheckBox" class="bg-[#f8fafc] w-12 h-6 rounded-full relative cursor-pointer">
+                        <input type="checkbox" name="uppercaseCheckBox" id="uppercaseCheckBox" class="sr-only peer" >
+                        <span class="w-2/5 h-5/6 bg-[#0c1425] absolute left-1 top-0.5 rounded-full peer-checked:left-6 peer-checked:bg-blue-600 transition-all duration-500 "></span>
+                    </label>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <label for="lowercaseCheckBox" class="text-[#f8fafc] text-base font-light">Lowercase Letters</label>
+                    <label for="lowercaseCheckBox" class="bg-[#f8fafc] w-12 h-6 rounded-full relative cursor-pointer">
+                        <input type="checkbox" name="lowercaseCheckBox" id="lowercaseCheckBox" class="sr-only peer" >
+                        <span class="w-2/5 h-5/6 bg-[#0c1425] absolute left-1 top-0.5 rounded-full peer-checked:left-6 peer-checked:bg-blue-600 transition-all duration-500 "></span>
+                    </label>
+                </div>
+                <div class="flex justify-between items-center mb-4">
+                    <label for="numberCheckBox" class="text-[#f8fafc] text-base font-light">Numbers</label>
+                    <label for="numberCheckBox" class="bg-[#f8fafc] w-12 h-6 rounded-full relative cursor-pointer">
+                        <input type="checkbox" name="numberCheckBox" id="numberCheckBox" class="sr-only peer" >
+                        <span class="w-2/5 h-5/6 bg-[#0c1425] absolute left-1 top-0.5 rounded-full peer-checked:left-6 peer-checked:bg-blue-600 transition-all duration-500 "></span>
+                    </label>
+                </div>
+                <div class="flex justify-between items-center">
+                    <label for="symbolCheckBox" class="text-[#f8fafc] text-base font-light">Special Characters</label>
+                    <label for="symbolCheckBox" class="bg-[#f8fafc] w-12 h-6 rounded-full relative cursor-pointer">
+                        <input type="checkbox" name="symbolCheckBox" id="symbolCheckBox" class="sr-only peer" >
+                        <span class="w-2/5 h-5/6 bg-[#0c1425] absolute left-1 top-0.5 rounded-full peer-checked:left-6 peer-checked:bg-blue-600 transition-all duration-500 "></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>
